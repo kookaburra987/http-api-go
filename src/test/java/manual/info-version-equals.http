@@ -1,0 +1,13 @@
+GET http://localhost:8080/go/info/version/equals
+
+###
+POST http://localhost:8080/go/info/version/equals
+
+0.0.1
+###
+
+###
+POST http://localhost:8080/go/info/version/equals
+
+0.0.2
+###

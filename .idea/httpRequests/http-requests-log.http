@@ -1,0 +1,16 @@
+GET http://localhost:8080/go/info/version
+
+<> 2025-10-30T212446.200.txt
+
+###
+
+GET http://localhost:8080/info/version
+
+<> 2025-10-30T212435.404.html
+
+###
+
+GET http://localhost:8080/info/version
+
+###
+

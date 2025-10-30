@@ -1,3 +1,33 @@
+GET http://localhost:8080/go/api-docs
+
+<> 2025-10-30T220145.200.json
+
+###
+
+GET http://localhost:8080/go/api-docs-ui.html
+
+<> 2025-10-30T220103.200.html
+
+###
+
+GET http://localhost:8080/go/api-docs-ui
+
+<> 2025-10-30T220050.404.json
+
+###
+
+GET http://localhost:8080/go/api-docs
+
+<> 2025-10-30T220013.200.json
+
+###
+
+GET http://localhost:8080/api-docs
+
+<> 2025-10-30T215953.404.html
+
+###
+
 POST http://localhost:8080/go/info/version/equals
 
 0.0.2

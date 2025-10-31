@@ -1,30 +1,200 @@
-GET http://localhost:8080/go/api-docs
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
 
-<> 2025-10-30T220145.200.json
+0.0.2
 
-###
-
-GET http://localhost:8080/go/api-docs-ui.html
-
-<> 2025-10-30T220103.200.html
+<> 2025-11-01T002959.200.json
 
 ###
 
-GET http://localhost:8080/go/api-docs-ui
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic {{username}} {{password}}
 
-<> 2025-10-30T220050.404.json
-
-###
-
-GET http://localhost:8080/go/api-docs
-
-<> 2025-10-30T220013.200.json
+0.0.2
 
 ###
 
-GET http://localhost:8080/api-docs
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
 
-<> 2025-10-30T215953.404.html
+0.0.2
+
+<> 2025-11-01T002950.200.json
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic {{username}} {{password}}
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic testUser testPwd
+
+0.0.2
+
+###
+
+POST http://localhost:8080/go/info/version/equals
+Authorization: Basic {{username}} {{password}}
+
+0.0.2
 
 ###
 
@@ -32,69 +202,109 @@ POST http://localhost:8080/go/info/version/equals
 
 0.0.2
 
-<> 2025-10-30T215130.200.json
+###
+
+POST http://localhost:8080/go/info/version/equals
+
+0.0.2
+
+###
+
+GET http://localhost:8080/go/api-docs
+
+<> 2025-10-31T001937.200.json
+
+###
+
+GET http://localhost:8080/go/api-docs
 
 ###
 
 POST http://localhost:8080/go/info/version/equals
 
-0.0.1
-
-<> 2025-10-30T215045.200.json
-
-###
-
-POST http://localhost:8080/go/info/version/equals
-
-0.0.1
-
-<> 2025-10-30T215028.405.json
-
-###
-
-GET http://localhost:8080/go/info/version/equals
-
-<> 2025-10-30T214843.400.json
+0.0.2
 
 ###
 
 GET http://localhost:8080/go/info/version
 
-<> 2025-10-30T214655.200.txt
+<> 2025-10-31T001754.200.txt
 
 ###
 
-GET http://localhost:8080/go/info/version/equals
+GET http://localhost:8080/go/api-docs-ui.html
 
-<> 2025-10-30T214645.404.json
+###
+
+GET http://localhost:8080/go/api-docs
+
+<> 2025-10-31T001742.200.json
+
+###
+
+GET http://localhost:8080/go/api-docs-ui.html
+
+###
+
+GET http://localhost:8080/go/api-docs-ui.html
+
+###
+
+GET http://localhost:8080/go/api-docs
+
+<> 2025-10-31T001510.200.json
+
+###
+
+GET http://localhost:8080/go/api-docs-ui.html
+
+###
+
+GET http://localhost:8080/go/api-docs-ui.html
 
 ###
 
 POST http://localhost:8080/go/info/version/equals
 
-<> 2025-10-30T214635.404.json
-
-###
-
-POST http://localhost:8080/go/info/version/equals
-
-<> 2025-10-30T214615.404.json
+0.0.2
 
 ###
 
 GET http://localhost:8080/go/info/version
 
-<> 2025-10-30T212446.200.txt
+<> 2025-10-31T001303.200.txt
 
 ###
 
-GET http://localhost:8080/info/version
-
-<> 2025-10-30T212435.404.html
+GET http://localhost:8080/go/api-docs-ui.html
 
 ###
 
-GET http://localhost:8080/info/version
+GET http://localhost:8080/go/api-docs-ui.html
+
+###
+
+GET http://localhost:8080/go/api-docs
+
+<> 2025-10-31T001233.200.json
+
+###
+
+GET http://localhost:8080/go/api-docs-ui.html
+
+###
+
+GET http://localhost:8080/go/api-docs-ui.html
+
+###
+
+GET http://localhost:8080/go/api-docs
+
+<> 2025-10-31T001021.200.json
+
+###
+
+GET http://localhost:8080/go/api-docs-ui.html
 
 ###
 

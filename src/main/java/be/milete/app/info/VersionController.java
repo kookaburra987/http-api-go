@@ -1,5 +1,6 @@
 package be.milete.app.info;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +21,7 @@ public class VersionController {
 
     @PostMapping(value = "equals")
     @ResponseStatus(HttpStatus.OK)
+    @SecurityRequirement(name = "basicauth")
     public boolean isVersion(@RequestBody String otherVersion){
         isTrue(isNotBlank(otherVersion), "version must not be blank");
         isTrue(otherVersion.length() < 16, "version must be max 16 characters");

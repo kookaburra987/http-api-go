@@ -1,4 +1,4 @@
-GET http://localhost:8080/go/info/version/equals
+POST http://localhost:8080/go/info/version/equals
 
 ###
 POST http://localhost:8080/go/info/version/equals
@@ -8,6 +8,7 @@ POST http://localhost:8080/go/info/version/equals
 
 ###
 POST http://localhost:8080/go/info/version/equals
+Authorization: Basic {{username}} {{password}}
 
 0.0.2
 ###

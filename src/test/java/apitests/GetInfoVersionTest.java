@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 /**
- * Tests tge GET /info/version endpoint. Requires a live running http-api-go server.
+ * Tests the GET /info/version endpoint. Requires a live running http-api-go server.
  */
 class GetInfoVersionTest {
 
@@ -13,7 +13,7 @@ class GetInfoVersionTest {
             .build();
 
     @Test
-    void shouldReturnOkAndVersion(){
+    void returnsOkAndVersion(){
         webClient.get()
                 .uri("/info/version")
                 .exchange()

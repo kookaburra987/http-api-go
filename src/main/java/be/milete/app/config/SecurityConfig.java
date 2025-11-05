@@ -12,6 +12,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 import static org.springframework.http.HttpMethod.GET;
+import static org.springframework.http.HttpMethod.POST;
 
 @Configuration
 @EnableWebSecurity
@@ -27,7 +28,14 @@ public class SecurityConfig {
                 .roles("USER")
                 .build();
 
-        return new InMemoryUserDetailsManager(testUser);
+        UserDetails testAdmin = User
+                .withDefaultPasswordEncoder()
+                .username("testAdmin")
+                .password("adminPwd")
+                .roles("ADMIN")
+                .build();
+
+        return new InMemoryUserDetailsManager(testUser, testAdmin);
     }
 
     @Bean
@@ -39,7 +47,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(authorize -> authorize
                 .requestMatchers(GET, "/info/version", "/api-docs").permitAll()
-                .requestMatchers("/**").hasRole("USER"))
+                .requestMatchers(POST, "/news-channel").hasRole("ADMIN")
+                .requestMatchers("/**").hasAnyRole("USER", "ADMIN"))
                 .httpBasic().and()
                 .csrf().disable();
 

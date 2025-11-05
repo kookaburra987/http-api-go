@@ -5,8 +5,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
-import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
+import static org.springframework.http.HttpStatus.*;
 
 /**
  * Class responsible for handling exceptions for multiple controllers.
@@ -29,5 +28,12 @@ public class GlobalExceptionHandler {
         ErrorResponse responseBody = new ErrorResponse("HTTP message not readable");
         //todo: log the exception
         return new ResponseEntity<>(responseBody, BAD_REQUEST);
+    }
+
+    @ExceptionHandler(NotUniqueValueException.class)
+    public ResponseEntity<ErrorResponse> handleNotUniqueValueException(NotUniqueValueException e){
+        ErrorResponse responseBody = new ErrorResponse(e.getMessage());
+        //todo: log the exception
+        return new ResponseEntity<>(responseBody, CONFLICT);
     }
 }

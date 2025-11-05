@@ -48,6 +48,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(authorize -> authorize
                 .requestMatchers(GET, "/info/version", "/api-docs").permitAll()
                 .requestMatchers(POST, "/news-channel").hasRole("ADMIN")
+                .requestMatchers(GET, "/news-channel").hasAnyRole("USER", "ADMIN")
                 .requestMatchers("/**").hasAnyRole("USER", "ADMIN"))
                 .httpBasic().and()
                 .csrf().disable();

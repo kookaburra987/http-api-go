@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
+import lombok.Getter;
 
 import static jakarta.persistence.GenerationType.AUTO;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -15,6 +16,7 @@ import static org.springframework.util.Assert.isTrue;
  * A container for News so that all news can be grouped by topic or type of intended audience.
  */
 @Entity
+@Getter
 public class NewsChannel {
 
     @Id
@@ -47,6 +49,8 @@ public class NewsChannel {
 
         this.name = name;
     }
+
+
 
     public void setDescription(String description) {
         validateDescription(description);

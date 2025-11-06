@@ -41,21 +41,19 @@ public class NewsChannel {
         validateDescription(description);
 
         this.name = name.trim();
-        this.description = description;
+        this.description = description.trim();
     }
 
     public void setName(String name) {
         validateName(name);
 
-        this.name = name;
+        this.name = name.trim();
     }
-
-
 
     public void setDescription(String description) {
         validateDescription(description);
 
-        this.description = description;
+        this.description = description.trim();
     }
 
     private void validateDescription(String description) {

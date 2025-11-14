@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
-import static apitests.ApiTestConstants.*;
+import static apitests.utils.ApiTestConstants.*;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 

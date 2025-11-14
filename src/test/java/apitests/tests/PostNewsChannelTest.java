@@ -1,21 +1,21 @@
-package apitests;
+package apitests.tests;
 
 
+import apitests.NewsChannelTestRequest;
 import org.apache.commons.lang3.RandomUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
 import static apitests.utils.ApiTestConstants.*;
+import static apitests.utils.WebTestClientFactory.createWebTestClient;
 
 /**
  * Tests the POST /news-channel endpoint. Requires a live running http-api-go server.
  */
 class PostNewsChannelTest {
 
-    private final WebTestClient webClient = WebTestClient.bindToServer()
-            .baseUrl(BASE_URL)
-            .build();
+    private final WebTestClient webClient = createWebTestClient();
 
     @Test
     void returnsForbiddenIfClientHasRoleUserAndNotAdmin(){

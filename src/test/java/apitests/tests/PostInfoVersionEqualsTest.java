@@ -1,10 +1,12 @@
-package apitests;
+package apitests.tests;
 
+import apitests.utils.WebTestClientFactory;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
 import static apitests.utils.ApiTestConstants.*;
+import static apitests.utils.WebTestClientFactory.createWebTestClient;
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 
@@ -13,10 +15,7 @@ import static java.lang.Boolean.TRUE;
  */
 class PostInfoVersionEqualsTest {
 
-
-    private final WebTestClient webClient = WebTestClient.bindToServer()
-            .baseUrl(BASE_URL)
-            .build();
+    private final WebTestClient webClient = createWebTestClient();
 
     @Test
     void returnsTrueIfVersionEquals(){

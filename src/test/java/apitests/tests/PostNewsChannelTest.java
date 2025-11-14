@@ -8,6 +8,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
 import static apitests.utils.ApiTestConstants.*;
+import static apitests.utils.NewsChannelActions.createNewsChannel;
 import static apitests.utils.WebTestClientFactory.createWebTestClient;
 
 /**
@@ -53,33 +54,14 @@ class PostNewsChannelTest {
         String randomName = createRandomName();
         NewsChannelTestRequest request = new NewsChannelTestRequest(randomName, "theDescription");
 
-        Mono<NewsChannelTestRequest> requestMono = Mono.just(request);
-
-        webClient.post()
-                .uri(NEWS_CHANNEL_PATH)
-                .body(requestMono, NewsChannelTestRequest.class)
-                .header("Authorization", ADMIN_USER_BASIC_AUTH)
-                .exchange()
-                .expectStatus()
-                .isCreated()
-                .expectBody()
-                .isEmpty();
+        createNewsChannel(request);
     }
 
     @Test
     void returnsConflictIfNameIsAlreadyInUse(){
         String name = createRandomName();
         NewsChannelTestRequest request1 = new NewsChannelTestRequest(name, "theDescription");
-        Mono<NewsChannelTestRequest> requestMono1 = Mono.just(request1);
-        webClient.post()
-                .uri(NEWS_CHANNEL_PATH)
-                .body(requestMono1, NewsChannelTestRequest.class)
-                .header("Authorization", ADMIN_USER_BASIC_AUTH)
-                .exchange()
-                .expectStatus()
-                .isCreated()
-                .expectBody()
-                .isEmpty();
+        createNewsChannel(request1);
 
         NewsChannelTestRequest request2 = new NewsChannelTestRequest(name, "theOtherDescription");
         Mono<NewsChannelTestRequest> requestMono2 = Mono.just(request2);

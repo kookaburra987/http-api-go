@@ -1,5 +1,7 @@
 package be.milete.app.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.SecurityFilterChain;
 
 import static org.springframework.http.HttpMethod.*;
@@ -17,6 +20,8 @@ import static org.springframework.http.HttpMethod.*;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    private Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
 
     @Bean
     public InMemoryUserDetailsManager userDetailsService(){
@@ -35,7 +40,9 @@ public class SecurityConfig {
                 .roles("ADMIN")
                 .build();
 
-        return new InMemoryUserDetailsManager(testUser, testAdmin);
+        InMemoryUserDetailsManager inMemoryUserDetailsManager = new InMemoryUserDetailsManager(testUser, testAdmin);
+        logger.debug("inMemoryUserDetailsManager has been created");
+        return inMemoryUserDetailsManager;
     }
 
     @Bean
@@ -54,6 +61,9 @@ public class SecurityConfig {
                 .httpBasic(httpSecurityHttpBasicConfigurer -> httpSecurityHttpBasicConfigurer.realmName("myRealm"))
                 .csrf(AbstractHttpConfigurer::disable);
 
-        return http.build();
+        DefaultSecurityFilterChain build = http.build();
+        logger.debug("securityFilterChain has been build");
+
+        return build;
     }
 }

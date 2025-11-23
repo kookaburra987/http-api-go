@@ -1,11 +1,13 @@
 package be.milete.app.news;
 
 import be.milete.app.exception.NotUniqueValueException;
+import be.milete.app.exception.ResourceNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.util.Assert.notNull;
 
@@ -44,5 +46,27 @@ public class NewsChannelService {
             responseList.add(resp);
         });
         return responseList;
+    }
+
+    public void updateNewsChannel(int id, NewsChannelRequest request) {
+        notNull(request, "request must not be null");
+
+        String newName = request.name().trim();
+        String newDescription = request.description().trim();
+
+        if (repository.existsByNameAndIdIsNot(newName, id)){
+            throw new NotUniqueValueException("name must be unique and is already in use");
+        }
+
+        Optional<NewsChannel> optionalNewsChannel = repository.findById(id);
+        if (optionalNewsChannel.isEmpty()){
+            throw new ResourceNotFoundException("newsChannel not found");
+        }
+
+        NewsChannel newsChannel = optionalNewsChannel.get();
+        newsChannel.setName(newName);
+        newsChannel.setDescription(newDescription);
+
+        repository.save(newsChannel);
     }
 }

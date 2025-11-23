@@ -12,8 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.*;
 
 @Configuration
 @EnableWebSecurity
@@ -49,6 +48,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(authorize -> authorize
                 .requestMatchers(GET, "/info/version", "/api-docs").permitAll()
                 .requestMatchers(POST, "/news-channel").hasRole("ADMIN")
+                .requestMatchers(PUT, "/news-channel/*").hasRole("ADMIN")
                 .requestMatchers(GET, "/news-channel").hasAnyRole("USER", "ADMIN")
                 .requestMatchers("/**").hasAnyRole("USER", "ADMIN"))
                 .httpBasic(httpSecurityHttpBasicConfigurer -> httpSecurityHttpBasicConfigurer.realmName("myRealm"))

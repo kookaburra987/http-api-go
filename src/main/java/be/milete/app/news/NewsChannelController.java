@@ -6,8 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static org.springframework.http.HttpStatus.CREATED;
-import static org.springframework.http.HttpStatus.OK;
+import static org.springframework.http.HttpStatus.*;
 
 @RestController
 @RequestMapping("news-channel")
@@ -24,6 +23,12 @@ public class NewsChannelController {
     @PostMapping
     public void create(@RequestBody @Validated NewsChannelRequest request){
         service.createNewsChannel(request);
+    }
+
+    @ResponseStatus(NO_CONTENT)
+    @PutMapping(path = "/{id}")
+    public void update(@PathVariable("id") Integer id, @RequestBody @Validated NewsChannelRequest request){
+        service.updateNewsChannel(id, request);
     }
 
     @ResponseStatus(OK)

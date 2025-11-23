@@ -30,6 +30,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(responseBody, BAD_REQUEST);
     }
 
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleResourceNotFoundException(ResourceNotFoundException e){
+        ErrorResponse responseBody = new ErrorResponse(e.getMessage());
+        //todo: log the exception
+        return new ResponseEntity<>(responseBody, NOT_FOUND);
+    }
+
     @ExceptionHandler(NotUniqueValueException.class)
     public ResponseEntity<ErrorResponse> handleNotUniqueValueException(NotUniqueValueException e){
         ErrorResponse responseBody = new ErrorResponse(e.getMessage());

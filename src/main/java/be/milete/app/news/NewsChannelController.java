@@ -31,6 +31,12 @@ public class NewsChannelController {
         service.updateNewsChannel(id, request);
     }
 
+    @ResponseStatus(NO_CONTENT)
+    @DeleteMapping(path = "/{id}")
+    public void delete(@PathVariable("id") Integer id){
+        service.deleteNewsChannel(id);
+    }
+
     @ResponseStatus(OK)
     @GetMapping
     public List<NewsChannelResponse> getAll(){

@@ -38,6 +38,18 @@ public class NewsChannelService {
     }
 
     @Transactional
+    public synchronized void deleteNewsChannel(Integer id) {
+        notNull(id, "id must not be null");
+
+        boolean exists = repository.existsById(id);
+        if (! exists){
+            throw ResourceNotFoundException.fromName("newsChannel");
+        }
+
+        repository.deleteById(id);
+    }
+
+    @Transactional
     public List<NewsChannelResponse> getAllNewsChannels() {
         Iterable<NewsChannel> allNewsChannels = repository.findAll();
         List<NewsChannelResponse> responseList = new ArrayList<>();
@@ -60,7 +72,7 @@ public class NewsChannelService {
 
         Optional<NewsChannel> optionalNewsChannel = repository.findById(id);
         if (optionalNewsChannel.isEmpty()){
-            throw new ResourceNotFoundException("newsChannel not found");
+            throw ResourceNotFoundException.fromName("newsChannel");
         }
 
         NewsChannel newsChannel = optionalNewsChannel.get();
@@ -69,4 +81,6 @@ public class NewsChannelService {
 
         repository.save(newsChannel);
     }
+
+
 }

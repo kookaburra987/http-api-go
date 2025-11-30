@@ -21,7 +21,7 @@ import static org.springframework.http.HttpMethod.*;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
+    private final Logger logger = LoggerFactory.getLogger(SecurityConfig.class);
 
     @Bean
     public InMemoryUserDetailsManager userDetailsService(){
@@ -56,6 +56,7 @@ public class SecurityConfig {
                 .requestMatchers(GET, "/info/version", "/api-docs").permitAll()
                 .requestMatchers(POST, "/news-channel").hasRole("ADMIN")
                 .requestMatchers(PUT, "/news-channel/*").hasRole("ADMIN")
+                .requestMatchers(DELETE, "/news-channel/*").hasRole("ADMIN")
                 .requestMatchers(GET, "/news-channel").hasAnyRole("USER", "ADMIN")
                 .requestMatchers("/**").hasAnyRole("USER", "ADMIN"))
                 .httpBasic(httpSecurityHttpBasicConfigurer -> httpSecurityHttpBasicConfigurer.realmName("myRealm"))

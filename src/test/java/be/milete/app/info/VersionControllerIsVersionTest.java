@@ -1,28 +1,25 @@
 package be.milete.app.info;
 
+import be.milete.app.exception.GlobalExceptionHandler;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.context.WebApplicationContext;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
-@SpringBootTest
 class VersionControllerIsVersionTest {
-
-    @Autowired
-    private WebApplicationContext context;
 
     private static MockMvc mockMvc;
 
     @BeforeEach
     public void createMockMvc(){
-        mockMvc = webAppContextSetup(context).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(VersionController.class)
+                .setControllerAdvice(new GlobalExceptionHandler())
+                .build();
     }
 
     @Test
@@ -39,4 +36,17 @@ class VersionControllerIsVersionTest {
                 .andExpect(content().string("false"));
     }
 
+    @Test
+    void givenBlankVersionShouldReturnBadRequest() throws Exception {
+        mockMvc.perform(post("/info/version/equals").content("\t\n "))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().json("{\"message\":\"version must not be blank\"}"));
+    }
+
+    @Test
+    void givenVersionOf17CharactersShouldReturnBadRequest() throws Exception {
+        mockMvc.perform(post("/info/version/equals").content(StringUtils.repeat('1', 17)))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().json("{\"message\":\"version must be max 16 characters\"}"));
+    }
 }

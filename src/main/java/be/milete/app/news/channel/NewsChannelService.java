@@ -1,4 +1,4 @@
-package be.milete.app.news;
+package be.milete.app.news.channel;
 
 import be.milete.app.exception.NotUniqueValueException;
 import be.milete.app.exception.ResourceNotFoundException;

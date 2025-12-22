@@ -1,4 +1,4 @@
-package be.milete.app.news;
+package be.milete.app.news.channel;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

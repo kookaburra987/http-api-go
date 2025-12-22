@@ -1,5 +1,6 @@
-package be.milete.app.news;
+package be.milete.app.news.channel;
 
+import be.milete.app.news.channel.NewsChannel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;

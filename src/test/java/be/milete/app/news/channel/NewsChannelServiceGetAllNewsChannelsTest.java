@@ -1,14 +1,15 @@
-package be.milete.app.news;
+package be.milete.app.news.channel;
 
-import org.junit.jupiter.api.Assertions;
+import be.milete.app.news.channel.NewsChannel;
+import be.milete.app.news.channel.NewsChannelRepository;
+import be.milete.app.news.channel.NewsChannelResponse;
+import be.milete.app.news.channel.NewsChannelService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Arrays.asList;

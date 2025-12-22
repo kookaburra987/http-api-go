@@ -1,4 +1,4 @@
-package be.milete.app.news;
+package be.milete.app.news.channel;
 
 /**
  * Not detailed info about a NewsChannel

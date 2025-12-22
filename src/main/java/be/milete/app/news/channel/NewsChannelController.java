@@ -1,4 +1,4 @@
-package be.milete.app.news;
+package be.milete.app.news.channel;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.validation.annotation.Validated;

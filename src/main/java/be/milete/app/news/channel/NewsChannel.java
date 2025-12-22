@@ -1,4 +1,4 @@
-package be.milete.app.news;
+package be.milete.app.news.channel;
 
 
 import jakarta.persistence.Entity;

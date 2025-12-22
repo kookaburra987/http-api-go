@@ -1,6 +1,8 @@
-package be.milete.app.news;
+package be.milete.app.news.channel;
 
 import be.milete.app.exception.ResourceNotFoundException;
+import be.milete.app.news.channel.NewsChannelRepository;
+import be.milete.app.news.channel.NewsChannelService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.function.Executable;

@@ -1,11 +1,12 @@
 package be.milete.app.news.channel;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import be.milete.app.news.article.NewsArticle;
+import jakarta.persistence.*;
 import lombok.Getter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static jakarta.persistence.GenerationType.AUTO;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -27,6 +28,9 @@ public class NewsChannel {
     private String name;
 
     private String description;
+
+    @OneToMany(mappedBy = "newsChannel")
+    private List<NewsArticle> articles = new ArrayList<>();
 
     public NewsChannel() {
     }
@@ -54,6 +58,12 @@ public class NewsChannel {
         validateDescription(description);
 
         this.description = description.trim();
+    }
+
+    public void addArticle(NewsArticle newsArticle){
+        //todo: not null validation
+
+        this.articles.add(newsArticle);
     }
 
     private void validateDescription(String description) {

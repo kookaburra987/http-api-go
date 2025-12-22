@@ -10,9 +10,12 @@
 		http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.9.xsd">
 
     <changeSet id="1" author="Gino Dockx">
-        <createTable tableName="news_channel">
+        <createTable tableName="news_article">
             <column name="id" type="integer">
                 <constraints primaryKey="true" primaryKeyName="pk_news_article_id"/>
+            </column>
+            <column name="news_channel_id" type="integer">
+                <constraints nullable="false" notNullConstraintName="nn_news_channel_id"/>
             </column>
             <column name="title" type="VARCHAR2">
                 <constraints nullable="false" notNullConstraintName="nn_news_article_title"/>
@@ -22,6 +25,8 @@
             </column>
         </createTable>
         <createSequence sequenceName="news_article_seq" dataType="integer" />
+        <addForeignKeyConstraint baseTableName="news_article" baseColumnNames="news_channel_id" constraintName="fk_news_article_to_news_channel" referencedTableName="news_channel"
+                                 referencedColumnNames="id"/>
     </changeSet>
 
 </databaseChangeLog>

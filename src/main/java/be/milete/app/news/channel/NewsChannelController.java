@@ -1,5 +1,7 @@
 package be.milete.app.news.channel;
 
+import be.milete.app.news.article.NewsArticleRequest;
+import be.milete.app.news.article.NewsArticleService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +17,11 @@ public class NewsChannelController {
 
     private final NewsChannelService service;
 
-    public NewsChannelController(NewsChannelService service) {
+    private final NewsArticleService articleService;
+
+    public NewsChannelController(NewsChannelService service, NewsArticleService articleService) {
         this.service = service;
+        this.articleService = articleService;
     }
 
     @ResponseStatus(CREATED)
@@ -41,5 +46,11 @@ public class NewsChannelController {
     @GetMapping
     public List<NewsChannelResponse> getAll(){
         return service.getAllNewsChannels();
+    }
+
+    @ResponseStatus(CREATED)
+    @PostMapping(path = "/{id}/article")
+    public void addArticleToChannel(@PathVariable("id") int newsChannelId, @RequestBody @Validated NewsArticleRequest request){
+        articleService.createNewsArticle(request, newsChannelId);
     }
 }

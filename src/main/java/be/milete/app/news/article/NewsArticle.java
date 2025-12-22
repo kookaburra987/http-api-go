@@ -1,9 +1,7 @@
 package be.milete.app.news.article;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import be.milete.app.news.channel.NewsChannel;
+import jakarta.persistence.*;
 import lombok.Getter;
 
 import static jakarta.persistence.GenerationType.AUTO;
@@ -24,10 +22,14 @@ public class NewsArticle {
     @Id
     @GeneratedValue(strategy = AUTO, generator = "news_article_seq_gen")
     @SequenceGenerator(name = "news_article_seq_gen", sequenceName = "news_article_seq", allocationSize = 1)
+    private Integer id;
 
     private String title;
 
     private String paragraph;
+
+    @ManyToOne
+    private NewsChannel newsChannel;
 
     public NewsArticle(String title, String paragraph) {
         validateTitle(title);

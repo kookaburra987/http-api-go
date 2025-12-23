@@ -4,10 +4,12 @@ import be.milete.app.news.channel.NewsChannel;
 import jakarta.persistence.*;
 import lombok.Getter;
 
+import static jakarta.persistence.FetchType.LAZY;
 import static jakarta.persistence.GenerationType.AUTO;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.apache.commons.lang3.StringUtils.length;
 import static org.springframework.util.Assert.isTrue;
+import static org.springframework.util.Assert.notNull;
 
 /**
  * Represents an article on a {@link be.milete.app.news.channel.NewsChannel} that contains a title and paragraph.
@@ -28,7 +30,7 @@ public class NewsArticle {
 
     private String paragraph;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     private NewsChannel newsChannel;
 
     public NewsArticle(String title, String paragraph) {
@@ -37,6 +39,12 @@ public class NewsArticle {
 
         this.title = title;
         this.paragraph = paragraph;
+    }
+
+    public void setNewsChannel(NewsChannel newsChannel) {
+        notNull(newsChannel, "newsChannel must not be null");
+
+        this.newsChannel = newsChannel;
     }
 
     private void validateTitle(String title){

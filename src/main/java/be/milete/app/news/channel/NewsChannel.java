@@ -8,6 +8,7 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jakarta.persistence.CascadeType.PERSIST;
 import static jakarta.persistence.GenerationType.AUTO;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.apache.commons.lang3.StringUtils.length;
@@ -29,7 +30,7 @@ public class NewsChannel {
 
     private String description;
 
-    @OneToMany(mappedBy = "newsChannel")
+    @OneToMany(mappedBy = "newsChannel", cascade = PERSIST)
     private List<NewsArticle> articles = new ArrayList<>();
 
     public NewsChannel() {

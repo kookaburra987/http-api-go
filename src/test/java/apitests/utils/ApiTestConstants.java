@@ -17,4 +17,6 @@ public class ApiTestConstants {
     public static final String INFO_VERSION_EQUALS_PATH = "/info/version/equals";
 
     public static final String NEWS_CHANNEL_PATH = "/news-channel";
+
+    public static final String NEWS_CHANNEL_ARTICLE_PATH = "/news-channel/%d/article";
 }

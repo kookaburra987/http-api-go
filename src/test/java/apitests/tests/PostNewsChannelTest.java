@@ -2,12 +2,12 @@ package apitests.tests;
 
 
 import apitests.NewsChannelTestRequest;
-import org.apache.commons.lang3.RandomUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Mono;
 
 import static apitests.utils.ApiTestConstants.*;
+import static apitests.utils.ApiTestUtils.createRandomName;
 import static apitests.utils.NewsChannelActions.createNewsChannel;
 import static apitests.utils.WebTestClientFactory.createWebTestClient;
 
@@ -74,12 +74,6 @@ class PostNewsChannelTest {
                 .isEqualTo(409)
                 .expectBody()
                 .json("{\"message\":\"name must be unique and is already in use\"}");
-    }
-
-    private String createRandomName() {
-        //random name is created so that it does not conflict with data that already exists in database
-        int randomInt = RandomUtils.insecure().randomInt();
-        return "theName-" + randomInt;
     }
 
 }

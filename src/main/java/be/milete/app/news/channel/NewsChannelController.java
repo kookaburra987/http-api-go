@@ -1,6 +1,7 @@
 package be.milete.app.news.channel;
 
 import be.milete.app.news.article.NewsArticleRequest;
+import be.milete.app.news.article.NewsArticleResponse;
 import be.milete.app.news.article.NewsArticleService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.validation.annotation.Validated;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.*;
+import static org.springframework.util.Assert.isTrue;
 
 @RestController
 @RequestMapping("news-channel")
@@ -52,5 +54,14 @@ public class NewsChannelController {
     @PostMapping(path = "/{id}/article")
     public void addArticleToChannel(@PathVariable("id") int newsChannelId, @RequestBody @Validated NewsArticleRequest request){
         articleService.createNewsArticle(request, newsChannelId);
+    }
+
+    @GetMapping(path = "/{id}/article")
+    public List<NewsArticleResponse> getArticlesOfChannel(@PathVariable("id") int newsChannelId, @RequestParam("page") int page, @RequestParam("size") int size){
+        isTrue(page > -1, "page must be greater than -1");
+        isTrue(size > 0, "size must be positive number");
+        isTrue(size < 51, "size must be lower than 51");
+
+        return articleService.findPaginated(newsChannelId, page, size);
     }
 }
